@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Mahal Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'gilroy', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .Main {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 8%;
+            background-color: #fdfdfc;
+        }
+
+        .head {
+            background: #fdfdfc;
+            height: 8%;
+            width: 100%;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            gap: 2%;
+            align-items: center;
+            z-index: 1000;
+            padding: 0 1rem;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .A {
+            font-size: 20px;
+            color: rgb(121, 121, 121);
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+
+        .A:hover {
+            background: #f7f7f5;
+            color: rgb(77, 104, 179);
+            border-radius: 10px;
+        }
+
+        .logo {
+            height: 140%;
+            object-fit: cover;
+            border-right: 2px solid #000;
+            max-width: 60px;
+        }
+
+        #darkToggle {
+            display: none;
+        }
+
+        .toggle-label {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 1.5rem;
+            user-select: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: 5px;
+            background: #ccc;
+            transition: background 0.3s;
+        }
+
+        .toggle-label:hover {
+            background: #aaa;
+        }
+
+        #darkToggle:checked ~ .Main {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        #darkToggle:checked ~ .Main .head {
+            background-color: #1f1f1f;
+        }
+
+        #darkToggle:checked ~ .Main .A {
+            color: #ccc;
+        }
+
+        #darkToggle:checked ~ .Main .A:hover {
+            background: #333;
+            color: #9fd3ff;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a252f;
+        }
+
+        #darkToggle:checked ~ .Main .form-container {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        #darkToggle:checked ~ .Main input,
+        #darkToggle:checked ~ .Main textarea,
+        #darkToggle:checked ~ .Main select {
+            background-color: #333;
+            color: #f5f5f5;
+            border: 1px solid #555;
+        }
+
+        #darkToggle:checked ~ .Main button {
+            background-color: #555;
+        }
+
+        #darkToggle:checked ~ .Main button:hover {
+            background-color: #777;
+        }
+
+        @media screen and (max-width: 768px) {
+            .head {
+             
+                align-items: flex-start;
+                padding: 1rem;
+                height: auto;
+            }
+
+            .nav {
+                
+                width: 100%;
+                gap: 0.5rem;
+                padding-top: 0.5rem;
+            }
+
+            .logo {
+                height: 50px;
+                max-width: 50px;
+                margin-bottom: 0.5rem;
+            }
+
+            .toggle-label {
+                margin: 0;
+                align-self: flex-end;
+            }
+
+            .form-container {
+                width: 90%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="darkToggle">
+    <div class="Main">
+        <header class="head">
+            <img src="bird_2.jpg" alt="logo" class="logo">
+            <nav class="nav">
+                <a href="index.html" class="A">Home</a>
+                <a href="animation.html" class="A">Animation</a>
+                <a href="feedback.html" class="A">Feedback</a>
+            </nav>
+            <label for="darkToggle" class="toggle-label">🌙</label>
+        </header>
+
+        <main class="form-container">
+            <h2>Taj Mahal Feedback</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="visit-date">Date of Visit:</label>
+                <input type="date" id="visit-date" name="visit-date" required>
+
+                <label for="rating">Rate Your Experience:</label>
+                <select id="rating" name="rating" required>
+                    <option value="">--Select--</option>
+                    <option value="excellent">Excellent</option>
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="poor">Poor</option>
+                </select>
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Share your experience..."></textarea>
+
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

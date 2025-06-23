@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Mini web page</title>
+    <style>
+        :root {
+            --bg-main: #b8aeae;
+            --bg-header: #fdfdfc;
+            --bg-hover: #f7f7f5;
+            --link-color: rgb(121, 121, 121);
+            --link-hover: rgb(77, 104, 179);
+            --left-right-bg: #dddddb;
+            --para-color: #333;
+            --heading-color: #2c2c2c;
+            --column-color: #6B7676;
+            --footer-bg: #b8aeae;
+            --footer-color: #333;
+            --toggle-bg: #ccc;
+            --toggle-hover: #aaa;
+
+            --dark-bg-main: #121212;
+            --dark-bg-header: #1f1f1f;
+            --dark-link-color: #ccc;
+            --dark-link-hover: #9fd3ff;
+            --dark-hover-bg: #333;
+            --dark-left-right: #2a2a2a;
+            --dark-footer-bg: #1e1e1e;
+            --dark-footer-color: #aaa;
+            --dark-text-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'gilroy';
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .Main {
+            height: 100%;
+            width: 100%;
+            background: var(--bg-main);
+            color: var(--para-color);
+        }
+
+        .head {
+            background: var(--bg-header);
+            height: 8%;
+            width: 100%;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            gap: 2%;
+            align-items: center;
+            z-index: 1000;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 1rem;
+        }
+
+        .A {
+            font-size: 20px;
+            margin-right: 2%;
+            color: var(--link-color);
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+
+        .A:hover {
+            background: var(--bg-hover);
+            color: var(--link-hover);
+            border-radius: 10px;
+        }
+
+        .logo {
+            height: 140%;
+            object-fit: cover;
+            border-right: 2px solid #000;
+        }
+
+        main {
+            margin-top: 3%;
+            min-height: 92vh;
+            width: 100%;
+            background: var(--bg-main);
+            padding: 2rem;
+        }
+
+        .center {
+            height: auto;
+            width: 30vh;
+            float: left;
+            margin-right: 2%;
+            overflow: hidden;
+            border-radius: 3vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .image {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        #darkToggle {
+            display: none;
+        }
+
+        .toggle-label {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 1.5rem;
+            user-select: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: 5px;
+            background: var(--toggle-bg);
+            transition: background 0.3s;
+        }
+
+        .toggle-label:hover {
+            background: var(--toggle-hover);
+        }
+
+        #darkToggle:checked ~ .Main {
+            background-color: var(--dark-bg-main);
+            color: var(--dark-text-color);
+        }
+
+        #darkToggle:checked ~ .Main .head {
+            background-color: var(--dark-bg-header);
+        }
+
+        #darkToggle:checked ~ .Main .A {
+            color: var(--dark-link-color);
+        }
+
+        #darkToggle:checked ~ .Main .A:hover {
+            background: var(--dark-hover-bg);
+            color: var(--dark-link-hover);
+        }
+
+        #darkToggle:checked ~ .Main main {
+            background: var(--dark-bg-main);
+        }
+
+        #darkToggle:checked ~ .Main .left,
+        #darkToggle:checked ~ .Main .right {
+            background-color: var(--dark-left-right);
+            color: var(--dark-text-color);
+        }
+
+        #darkToggle:checked ~ .Main footer {
+            background: var(--dark-footer-bg);
+            color: var(--dark-footer-color);
+        }
+
+        h2 {
+            margin-bottom: 1%;
+            color: var(--heading-color);
+        }
+
+        .para {
+            line-height: 1.6;
+            color: var(--para-color);
+        }
+
+        .para::first-letter {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            height: 20%;
+        }
+
+        .column {
+            color: var(--column-color);
+        }
+
+        .left,
+        .right {
+            height: 10%;
+            background-color: var(--left-right-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            overflow: scroll;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--footer-bg);
+            color: var(--footer-color);
+        }
+
+        @media (min-width: 768px) {
+            main {
+                padding: 2rem 5rem;
+            }
+
+            .container {
+                flex-direction: row;
+            }
+
+            .left,
+            .right {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+     <input type="checkbox" id="darkToggle">
+    <div class="Main">
+
+        <header class="head">
+            <img src="bird_2.jpg" alt="" class="logo">
+            <nav class="nav">
+                <a href="index.html" class="A">Home</a>
+                <a href="animation.html" class="A">Animation</a>
+                <a href="feedback.html" class="A">Feedback</a>
+            </nav>
+            <label for="darkToggle" class="toggle-label">🌙</label>
+        </header>
+        <main>
+            <div class="center">
+                <img src="taj.png" alt="Loading..." class="image">
+            </div>
+            <h2>The Taj Mahal: A Timeless Symbol of Love and Grandeur</h2>
+            <p class="para">
+                The Taj Mahal, located in Agra, India, stands as one of the most iconic monuments in the world and a
+                symbol of eternal love. Built by the Mughal emperor Shah Jahan in memory of his beloved wife Mumtaz
+                Mahal, this white marble masterpiece is more than just a mausoleum — it is a poem in stone, a marvel
+                of architecture, and a testament to the power of emotion.
+
+                Completed in 1653 after over 20 years of construction, the Taj Mahal is a blend of Persian, Islamic,
+                and Indian architectural styles. Its flawless symmetry, intricate carvings, and the delicate inlay
+                of semi-precious stones continue to leave millions of visitors in awe. The monument changes color
+                with the light of the day, adding a mystical charm to its beauty — from soft pink in the morning,
+                milky white in the evening, to golden under moonlight.
+
+                Recognized as a UNESCO World Heritage Site, the Taj Mahal not only reflects India's rich cultural
+                heritage but also reminds the world of the enduring nature of love and memory. It's not just a
+                monument — it's a story etched in stone, one that continues to inspire hearts across generations.
+            </p>
+            <div class="container">
+                <div class="left">
+                    <h2 class="column">Historical Significance</h2>
+                    <p>
+                        The Taj Mahal, constructed between 1631 and 1648 by the Mughal Emperor Shah Jahan in memory of
+                        his beloved wife Mumtaz Mahal, holds deep historical and cultural significance as a timeless
+                        symbol of love and devotion. Located in Agra, India, this magnificent white marble mausoleum is
+                        a remarkable example of Mughal architecture, blending Persian, Islamic, and Indian design
+                        elements into a harmonious and elegant structure. Its flawless symmetry, intricate carvings,
+                        detailed inlay work with semi-precious stones, and serene setting along the Yamuna River reflect
+                        the artistic excellence and architectural innovation of the Mughal era at its peak. The Taj
+                        Mahal also serves as a powerful political and cultural statement, representing the grandeur,
+                        wealth, and refined taste of the Mughal Empire during one of its most prosperous periods. Over
+                        time, it has become a universally recognized symbol of India’s rich historical legacy. In 1983,
+                        it was designated a UNESCO World Heritage Site for its outstanding universal value, and today it
+                        stands not only as an enduring monument to a personal love story but also as one of the world’s
+                        most visited and celebrated landmarks, drawing millions of tourists and scholars who admire its
+                        beauty, craftsmanship, and historical importance.
+                    </p>
+                </div>
+                <div class="right">
+                    <h2 class="column">Architectural Brilliance</h2>
+                    <p>The Taj Mahal is an architectural masterpiece of Mughal design, blending Persian, Islamic, and
+                        Indian elements. Crafted in pure white marble, its symmetrical layout, intricate inlay work, and
+                        majestic dome reflect both precision and artistic excellence. The structure is perfectly aligned
+                        with the rising and setting sun, creating a mesmerizing glow throughout the day. Its central
+                        dome reaches a height of 73 meters and is surrounded by four elegant minarets</p>
+                </div>
+            </div>
+        </main>
+        <hr>
+        <footer>
+            &copy;All Rights Reserved.
+        </footer>
+    </div>
+</body>
+
+</html>
